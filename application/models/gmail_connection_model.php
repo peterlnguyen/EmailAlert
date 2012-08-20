@@ -35,7 +35,9 @@
 		{
 			$this->connect_to_gmail();
 			$this->retrieve_emails('UNSEEN');
-			return $this->get_emails_pretty_print();
+			$emails = $this->get_emails_pretty_print();
+			$this->close_connection();
+			return $emails;
 		}
 		
 		/* connection and retrieving _emails */

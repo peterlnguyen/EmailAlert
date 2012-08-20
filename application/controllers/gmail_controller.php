@@ -11,7 +11,7 @@
 			$this->load->model('gmail_connection_model');
 			$this->gmail_connection_model->initialize($host, $user, $pass);
 			$msg1 = $this->gmail_connection_model->connect_retrieve_return_emails();
-			$this->gmail_connection_model->close_connection();
+			// $this->gmail_connection_model->close_connection();
 	 
 			$data = array(
 				'msg1' => $msg1,

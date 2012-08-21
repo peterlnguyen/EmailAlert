@@ -16,8 +16,16 @@
 			$data = array(
 				'msg1' => $msg1,
 			);
-	 
+			
 			$this->load->view('display', $data);
+		}
+		
+		function post()
+		{
+			$query = 'http://losangeles.craigslist.org/search/?areaID=7&subAreaID=&query=mattress&catAbb=sss';
+			$this->load->model('get_request');
+			$get_response = get_request::get_request($query);
+			echo htmlentities($get_response);
 		}
 	}
 ?>

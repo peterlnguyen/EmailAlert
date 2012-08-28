@@ -19,13 +19,15 @@
 			/* print errors and responses */
 			
 			$response = curl_exec($ch);
-			// if($response != '') echo ' RESPONSE: ' . $response;
-			$err = curl_error($ch);
-			if($err != '') echo ' ERROR: ' . $err;
-			$httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-			if($httpCode != '') echo ' HTTP CODE: ' . $httpCode;
-			curl_close($ch);
 			
+
+			// if($response != '') echo ' RESPONSE: ' . $response;
+			// $err = curl_error($ch);
+			// if($err != '') echo ' ERROR: ' . $err;
+			// $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+			// if($httpCode != '') echo ' HTTP CODE: ' . $httpCode;
+			
+			curl_close($ch);
 			return $response;
 		}
 	}

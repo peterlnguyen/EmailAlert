@@ -6,7 +6,7 @@
 		{
 			$host = '{imap.gmail.com:993/imap/ssl}INBOX';
 			$user = 'peterlongnguyen@gmail.com';
-			$pass = 'peaches123';
+			$pass = '';
 			
 			$this->load->model('gmail_connection_model');
 			$this->gmail_connection_model->initialize($host, $user, $pass);

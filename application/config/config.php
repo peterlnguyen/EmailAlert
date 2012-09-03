@@ -39,7 +39,7 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://localhost/CodeIgniter/';
+$config['base_url']	= 'http://localhost/EmailAlert-CodeIgniter/';
 
 /*
 |--------------------------------------------------------------------------

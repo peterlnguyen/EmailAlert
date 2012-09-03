@@ -20,9 +20,9 @@
 			$this->load->view('display', $data);
 		}
 		
-		function post()
+		function post($query)
 		{
-			$query = 'http://losangeles.craigslist.org/search/?areaID=7&subAreaID=&query=mattress&catAbb=sss';
+			$query = 'http://losangeles.craigslist.org/search/?areaID=7&subAreaID=&query=' . $query . '&catAbb=sss';
 			$this->load->model('get_request');
 			$get_response = get_request::get_request($query);
 			

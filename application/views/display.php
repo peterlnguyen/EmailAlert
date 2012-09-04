@@ -3,10 +3,10 @@
  
 	<head>
 		<title>Results</title>
-
+		<?php $this->load->helper('url'); ?>
+		<link rel="stylesheet" href="<?php echo base_url();?>css/bootstrap/bootstrap.css" type="text/css" media="screen"/>
 	</head>
 	<body>
-		
 		<?php echo $results; ?>
 	</body>
 </html>

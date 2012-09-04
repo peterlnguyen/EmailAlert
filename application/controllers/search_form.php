@@ -9,10 +9,7 @@
 		// loads form view
 		public function load_form()
 		{
-			$this->load->helper(array('form', 'url'));
-			
-			// $this->load->library('form_validation');
-			
+			$this->load->helper(array('form', 'url'));			
 			$this->load->view('search_form');
 		}
 		

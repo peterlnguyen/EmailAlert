@@ -1,7 +1,7 @@
  <?php
 
 	/* send text message, returns message status */
-	class Get_Request extends CI_Model
+	class Get_request extends CI_Model
 	{
 		public function __construct() {
 			parent::__construct();
@@ -20,7 +20,7 @@
 			
 			$response = curl_exec($ch);
 			
-
+			/* response used only for debugging */
 			// if($response != '') echo ' RESPONSE: ' . $response;
 			// $err = curl_error($ch);
 			// if($err != '') echo ' ERROR: ' . $err;

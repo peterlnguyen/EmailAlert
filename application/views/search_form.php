@@ -15,9 +15,9 @@
 
 		<center>
 		<form>
-			<legend>Los Angeles</legend>
+			<legend>Craigslist</legend>
 			<label>What are you looking for?</label>
-			<input type="text" value="<?php echo set_value('search_query'); ?>" name="search_query" placeholder="Ex: mattress">
+			<input type="text" value="<?php echo set_value('search_query'); ?>" name="search_query" placeholder="Ex: DeLorean DMC-12">
 			<br />
 			<?php 
 				$cities = array('Atlanta', 'Austin', 'Boston', 'Chicago', 'Dallas', 'Denver', 'Detroit', 'Houston', 'Las Vegas', 'Los Angeles', 'Miami', 'Minneapolis', 'New York', 'Orange County', 'Philadelphia', 'Phoenix', 'Portland', 'Raleigh', 'Sacramento', 'San Diego', 'Seattle', 'SFBay', 'Washington DC'); 

@@ -1,7 +1,7 @@
 <?php
 	/*
 	 * This class sends a GET request to craigslist to retrieve and scrape the page.
-	 * It is built particularly for craigslist because of the uniqeness of craigslist's link structure.
+	 * It is built particularly for craigslist's link address structure.
 	 */
 	class Craigslist_retriever extends CI_Controller
 	{
@@ -16,10 +16,9 @@
 			// extract desirable nodes
 			$tags = $this->parse_html($get_response);
 			
-			// format nodes for display
+			/* format nodes for display */
 			$results = '';
 			$results = $this->format_nodes_as_rows($tags);
-			if($results == '') $results = 'No results found!';
 						
 			$data = array(
 				'results' => $results,
@@ -41,10 +40,11 @@
 		
 		private function format_nodes_as_rows($tags) 
 		{
-			$results = '';
+			$results = '<ol>';
 			foreach ($tags as $tag) {
-				$results = $results . $tag->nodeValue . '<br />';
+				$results = $results . '<li>' . $tag->nodeValue . '</li><br />';
 			}
+			$results = $results . '</ol>';
 			return $results;
 		}
 	}

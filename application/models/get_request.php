@@ -6,7 +6,8 @@
 		public function __construct() {
 			parent::__construct();
 		}
-			
+		
+		// @todo need to add in a cache-check to prevent excess searches
 		public static function get_request($get_url) 
 		{
 			/* get with curl */

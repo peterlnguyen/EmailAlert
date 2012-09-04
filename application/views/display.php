@@ -2,9 +2,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
  
 	<head>
-		<title>CodeIgniter Test</title>
+		<title>Results</title>
+
 	</head>
 	<body>
+		
 		<?php echo $results; ?>
 	</body>
 </html>

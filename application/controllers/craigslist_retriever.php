@@ -34,12 +34,24 @@
 			@$dom->loadHTML($get_response);
 			$xpath = new DOMXPath($dom);
 			
-			// $tags = $xpath->query('//p[@class="row"]');
+			$tags = $xpath->query('//p[@class="row"]');
 			$titles = $xpath->query('//p[@class="row"]/a');
+			
+			foreach($tags as $row)
+			{
+				$links = $xpath->query('span[3]', $row);
+				$asdf = $xpath->query('a', $row);
+				foreach($links as $cols)
+				{
+					echo $cols->nodeValue . '<br />';
+				}
+				// echo htmlspecialchars($links->nodeValue) . '<br />';
+			}
+			
 			$links = $xpath->query('//p[@class="row"]/a/@href');
 			$prices = $xpath->query('//p[@class="row"]/span[@class="itempp"');
-			$dates = $xpath->query('//p[@class="row"]/span[@class="itemdate"');
-			$locations = $xpath->query('//p[@class="row"]/span[@class="itempn"');
+			// $dates = $xpath->query('//p[@class="row"]/span[@class="itemdate"');
+			// $locations = $xpath->query('//p[@class="row"]/span[@class="itempn"');
 			// $tags = $xpath->query('//p[@class="row"]/span[@class="itempn"]');
 			
 			// @todo trying to extract from the rows instead of querying every single time
@@ -63,44 +75,22 @@
 		private function format_nodes_as_rows($data) 
 		{
 			// $tags = $data['tags'];
-			$links = $data['links'];
 			$titles = $data['titles'];
+			$links = $data['links'];
 			$prices = $data['prices'];
 			$dates = $data['dates'];
 			$locations = $data['locations'];
 			
 			$data_rows = array();
-			$
+			$this->nodelist_to_array($dates, $data_rows);
+			$this->nodelist_to_array($titles, $data_rows);
+			$this->nodelist_to_array($prices, $data_rows);
+			$this->nodelist_to_array($locations, $data_rows);
+			$this->nodelist_to_array($links, $data_rows);
 			
 			// foreach($links as $link) {
 				// $results1 = $results1 . '<tr><td>' . $link->nodeValue . '</td></tr>';
-			// }
-			// foreach($tags as $tag) {
-				// $results = $results . '<tr><td>' . $tag->nodeValue . '</td></tr>';
-			// }
-			// foreach($titles as $title) {
-				// $results1 = $results1 . '<tr><td>' . $title->nodeValue . '</td></tr>';
-			// }
-			// foreach($prices as $price) {
-				// $results = $results . '<tr><td>' . $price->nodeValue . '</td></tr>';
-			// }
-			// foreach($locations as $location) {
-				// $results = $results . '<tr><td>' . $location->nodeValue . '</td></tr>';
-			// }
-			
-			/*			
-			$results = '<h1><center>Results</center></h1><table class="table table-striped">';
-			$results1 = '<h1><center>Results</center></h1><table class="table table-striped">';
-			
-			foreach($links as $link) {
-				$results1 = $results1 . '<tr><td>' . $link->nodeValue . '</td></tr>';
-			}
-			foreach($tags as $tag) {
-				$results = $results . '<tr><td>' . $tag->nodeValue . '</td></tr>';
-			}
-			$results = $results . '</table>';
-			$results1 = $results1 . '</table>';
-			*/
+
 			return $results1;
 		}
 		
@@ -109,7 +99,9 @@
 		{
 			$row_num = 0;
 			foreach($nodelist as $node) {
-				if(count($arr) <= $row_num) array_push($arr, array());
+				if(count($arr)) {
+					array_push($arr, array('<tr>'));
+				}
 				$row = $arr[$row_num];
 				array_push($row, $node);
 				$row_num++;

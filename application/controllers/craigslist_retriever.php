@@ -9,19 +9,20 @@
 		{
 			$query = 'http://' . $city . '.craigslist.org/search/?areaID=7&subAreaID=&query=' . $query . '&catAbb=sss';
 			$this->load->model('get_request');
+			$this->load->helper('url');
 			
 			// calls on model to GET
 			$get_response = get_request::get_request($query);
 			
-			// extract desirable nodes
-			$tags = $this->parse_html($get_response);
-			
-			/* format nodes for display */
-			$results = '';
-			$results = $this->format_nodes_as_rows($tags);
+				// extract desirable nodes
+				// $tags = $this->parse_html($get_response);
+				
+				// /* format nodes for display */
+				// $results = '';
+				// $results = $this->format_nodes_as_rows($tags);
 						
 			$data = array(
-				'results' => $results,
+				'results' => $get_response,
 			);
 			
 			$this->load->view('display', $data);
@@ -41,7 +42,7 @@
 			{
 				$links = $xpath->query('span[3]', $row);
 				$asdf = $xpath->query('a', $row);
-				foreach($links as $cols)
+				foreach($links as $cols) 
 				{
 					echo $cols->nodeValue . '<br />';
 				}

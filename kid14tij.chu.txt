@@ -1,0 +1,32 @@
+Morning commit
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch master
+# Changes to be committed:
+#   (use "git reset HEAD <file>..." to unstage)
+#
+#	modified:   application/controllers/craigslist_retriever.php
+#
+# Changes not staged for commit:
+#   (use "git add/rm <file>..." to update what will be committed)
+#   (use "git checkout -- <file>..." to discard changes in working directory)
+#
+#	deleted:    .htaccess
+#	deleted:    application/bootstrap/css/bootstrap-responsive.css
+#	deleted:    application/bootstrap/css/bootstrap-responsive.min.css
+#	deleted:    application/bootstrap/css/bootstrap.css
+#	deleted:    application/bootstrap/css/bootstrap.min.css
+#	deleted:    application/bootstrap/img/glyphicons-halflings-white.png
+#	deleted:    application/bootstrap/img/glyphicons-halflings.png
+#	deleted:    application/bootstrap/js/bootstrap.js
+#	deleted:    application/bootstrap/js/bootstrap.min.js
+#	deleted:    application/controllers/New Text Document.txt
+#	deleted:    application/controllers/contact.txt
+#	deleted:    application/controllers/form.php
+#	deleted:    application/views/bootstrap.min.css
+#	deleted:    application/views/bootstrap.min.js
+#	deleted:    application/views/formsuccess.php
+#	deleted:    application/views/jquery.min.js
+#	deleted:    application/views/myform.php
+#
+

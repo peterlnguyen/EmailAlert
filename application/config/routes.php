@@ -64,8 +64,10 @@
 |
 */
 
-$route['default_controller'] = 'welcome';
+// $route['default_controller'] = 'search_form/load_form';
+$route['default_controller'] = '../application/controllers/welcome.php';
 $route['404_override'] = '';
+
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

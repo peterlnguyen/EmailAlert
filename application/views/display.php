@@ -7,65 +7,64 @@
 		<script type="text/javascript" src="<?php echo base_url();?>js/jquery.min.js"></script>
 	</head>
 	<body>
+		<h3><center>Results</center></h3>
 		<script language="javascript" type="text/javascript">
 			var html = <?php echo json_encode($results); ?>;
-			// document.write(escapeHTML(html));
-			
-			var string = "sdsds<div>sdd<a href='http://google.com/image1.gif' class='hello'>image1</a>  sd</div>sdsdsdssssssssssssssssssssssssssssssssssss <p> <a href='some/href'></a> sdsdsdsds  </p>sdsds<div>sdd<img src='http://google.com/image1.gif' alt='car for family' />  sd</div>";
-			var craig = '<p class="row" data-latitude="" data-longitude=""><span class="ih" id="images:5Ef5K85M93L63M23J9c8h021d04a4990e1b94.jpg">&nbsp;</span> <span class="itemdate">Aug 20</span><span class="itemsep">-</span><a href="http://losangeles.craigslist.org/wst/fuo/3213144343.html">Pali Crib with Mattress</a> <span class="itemsep">-</span><span class="itempp">$199</span><span class="itempn"><font size="-1">(Westwood)</font></span> <span class="itemcg" title="fuo"><small class="gc"><a href="/fuo/">furniture - by owner</a></small></span><span class="itempx"><span class="p">pic</span></span><br class="c" /></p>';
 
 			var $container = $('<div/>').html(html);
-
 			var result = [];
-			
 			var tags = 'a[href], span.itemdate, span.itempp, span.itempn';
+			// @todo need to learn how to pass in jquery objects into javascript functions to modularize
 			$container.find('p.row').find(tags).each(function() {
 					if(this.tagName.toUpperCase() == 'SPAN') {
-						result.push(this.innerHTML + ' ***');
+						result.push(this.innerHTML);
 					}
-					
 					if(this.tagName.toUpperCase() == 'A') {
-						result.push(this.innerHTML + ' ***', this.href + ' ***');
+						result.push(this.innerHTML, this.href);
 					}
-					// result.push('<br />');
 			});
-
-			for(i = 1; i < result.length + 1; i++) {
-				if((i%6 != 0) || (i%7 != 0))
-					document.write(result[i-1]);
+			
+			printTable(result);
+			
+			/* wraps and prints html table format around array of results */
+			function printTable(result) {
+				document.write('<table class="table table-striped">');
+				document.write('<tr> <th>#</th> <th>Date</th> <th>Title</th> <th>URL</th> <th>Price</th> <th>Location</th> </tr>');
+				var a = 1, count = 1;
+				for(i = 0; i < result.length; i++) {
+					if(a == 1) {
+						document.write('<tr><td>' + count + '</td>');
+						document.write('<td>' + result[i] + '</td>');
+						count++;
+					} else if(a == 3) {
+						// wraps a href around link
+						document.write('<td><a href="' + result[i] + '">Link</a></td>');
+					} else if(a == 5) {
+						// strips parentheses and corrects case (e.g. san diego -> San Diego)
+						document.write('<td>' + toTitleCase(stripParentheses(result[i])) + '</td>');
+					} else if(a == 6 || a == 7) {
+						// document.write in next if statement will still fire at a = 6,7 for some reason without this if/else block
+					} else {
+						document.write('<td>' + result[i] + '</td>');
+					}
+					a++;
+					if(a == 8) {
+						a = 1;
+						document.write('</tr>');
+					}
+				}		
+				document.write('</table>');
 			}
 			
-			/****************************/
-			
-			function escapeHTML(unsafe) {
-			  return unsafe
-				  .replace(/&/g, "&amp;")
-				  .replace(/</g, "&lt;")
-				  .replace(/>/g, "&gt;")
-				  .replace(/"/g, "&quot;")
-				  .replace(/'/g, "&#039;");
+			function stripParentheses(text) {
+				return text.replace(/\(|\)/g, '');
 			}
 			
-			/*
-			var html = <?php echo json_encode($results); ?>;
+			function toTitleCase(str)
+			{
+				return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+			}
 			
-			// var string = "sdsds<div>sdd<a href='http://google.com/image1.gif' class='hello'>image1</a>  sd</div>sdsdsdssssssssssssssssssssssssssssssssssss <p> <a href='some/href'></a> sdsdsdsds  </p>sdsds<div>sdd<img src='http://google.com/image1.gif' alt='car for family' />  sd</div>";
-			var string = '<p class="row" data-latitude="" data-longitude=""><span class="ih" id="images:5Ef5K85M93L63M23J9c8h021d04a4990e1b94.jpg">&nbsp;</span> <span class="itemdate">Aug 20</span><span class="itemsep">-</span><a href="http://losangeles.craigslist.org/wst/fuo/3213144343.html">Pali Crib with Mattress</a> <span class="itemsep">-</span><span class="itempp">$199</span><span class="itempn"><font size="-1">(Westwood)</font></span> <span class="itemcg" title="fuo"><small class="gc"><a href="/fuo/">furniture - by owner</a></small></span><span class="itempx"><span class="p">pic</span></span><br class="c" /></p>';
-			var $container = $('<div/>').html(string);
-
-			var result = [];
-
-			$container.find('p.row').each(function() {
-				if(this.tagName.toUpperCase() == 'a') {
-					result.push('hello');
-					// result.push([this.tagName,this.innerHTML,this.href]);
-				} else {
-					// result.push([this.tagName,this.src,this.alt]);
-				}
-			});
-
-			document.write(result);
-			*/
 		</script>
 	</body>
 </html>

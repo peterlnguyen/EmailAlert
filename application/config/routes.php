@@ -64,8 +64,8 @@
 |
 */
 
-// $route['default_controller'] = 'search_form/load_form';
-$route['default_controller'] = '../application/controllers/welcome.php';
+$route['default_controller'] = 'search_form/load_form';
+// $route['default_controller'] = 'http://localhost/EmailAlert-CodeIgniter/application/application/controllers/welcome';
 $route['404_override'] = '';
 
 
